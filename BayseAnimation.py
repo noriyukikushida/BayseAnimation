@@ -14,7 +14,7 @@
 # The hit number is shown in purple at the top of the blue bottom canvas.
 # Ronan Le Bras
 # Copyright Gydatos LLC March 2013
-# BSD license - See Licence.txt file
+# Berkeley Free BSD license - See Licence.txt file
 
 import math as m
 import numpy as np
