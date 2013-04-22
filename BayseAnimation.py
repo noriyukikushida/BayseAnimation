@@ -22,7 +22,7 @@ from Tkinter import *
 from random import randint
 
 def dist(x,xm,dx):
-  d1=0.5*m.exp(-1.*abs(x-xm)/dx)/dx
+  	d1=0.5*m.exp(-1.*abs(x-xm)/dx)/dx
 	return d1
 
 def covariance(x0,x00,x1,dx):
