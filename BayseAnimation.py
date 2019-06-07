@@ -85,7 +85,7 @@ for j in range(1000):
 	p1=covariance(x0,x00,300.,10.)
 	p2=covariance(x0,x00,700.,20.)
 
-#	print p1,p2
+	#print p1,p2
 	y0=100
 	circle_radius=10
 	dr = 20
@@ -106,8 +106,11 @@ for j in range(1000):
 		
 	if(score[x0/10] > max_score):
 		max_score=score[x0/10]
-	for i in range(25):
-		rad=circle_radius+i*dr
+
+        iStation1 = 0
+        iStation2 = 0
+	for i in range(300):
+		rad=circle_radius+i*dr + 0.01
 		chart_1.create_line(0,100,1000,100,width=3,fill="black")
 		for k in range(99):
 			chart_1.create_line(10*k,int(200.*(1.-lap1[k])),10*(k+1),int(200.*(1.-lap1[k+1])),width=2,fill="red")
@@ -130,9 +133,30 @@ for j in range(1000):
 				high_score=3
 			
 			
+                if abs(rad - abs(300-x0)) < 10.0:
+                               # Travel time expected    # Travel time actual
+                   pos = 300 - (abs(500-300)           - abs(x0-300))
+		   chart_1.create_line(pos,100,pos,200,width=2,fill="red")
+		   chart_1.create_line(300,150,pos,150,width=2,fill="red",arrow=LAST)
+                   printText = str( (pos-300)/10 )+"sec."
+		   chart_1.create_text(300,170,text=printText,fill="black",font=("Times Roman","16"))
+                if abs(rad - abs(700-x0)) < 10.0:
+                   #pos = 700 - (x0 - 500)
+                   pos = 700 - (abs(500-700)           - abs(x0-700))
+		   chart_1.create_line(pos,100,pos,200,width=2,fill="blue")
+		   chart_1.create_line(700,150,pos,150,width=2,fill="blue",arrow=LAST)
+                   printText = str( (pos-700)/10)+"sec."
+		   chart_1.create_text(700,170,text=printText,fill="black",font=("Times Roman","16"))
 		chart_1.update()
-		chart_1.after(pause)
+                if abs(rad - abs(300-x0)) < 10.0 or abs(rad-abs(700-x0)) < 10.0:
+		   chart_1.after(pause*500)
+                else:
+		   chart_1.after(pause)
 		chart_1.delete(ALL)
 		chart_2.delete(ALL)
+
+                if rad >= abs(300-x0) and rad >= abs(700-x0):
+                   break
+                
 
 root.mainloop()
