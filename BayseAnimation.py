@@ -125,7 +125,7 @@ for j in range(1000):
 		chart_1.create_line(0,100,1000,100,width=3,fill="black")
 	        if(p_max_score > 0.0):
 	        	chart_1.create_oval(p_max_loc-15,85,p_max_loc+15,115,fill="yellow")
-                        printText = "Candidate\nScore:{0:.2e}".format(p_max_score)
+                        printText = "Best Candidate\nScore:{0:.2e}".format(p_max_score)
 		        chart_1.create_text(p_max_loc,125,text=printText,fill="black",font=("Times Roman","16"))
 		for k in range(99):
 			chart_1.create_line(10*k,int(200.*(1.-lap1[k])),10*(k+1),int(200.*(1.-lap1[k+1])),width=2,fill="red")
@@ -150,7 +150,7 @@ for j in range(1000):
                    pos = 300 - (abs(500-300)           - abs(x0-300))
 		   chart_1.create_line(pos,100,pos,200,width=2,fill="red")
 		   chart_1.create_line(300,150,pos,150,width=2,fill="red",arrow=LAST)
-                   printText = "{0:+d}{1}\nScore1={2:.2f}".format((pos-300)/10 ,"sec.",p1)
+                   printText = "Residual:{0:+d}{1}\nScore1={2:.2f}".format((pos-300)/10 ,"sec.",p1)
 		   chart_1.create_text(300,30,text=printText,fill="black",font=("Times Roman","16"))
 		   chart_2.create_line(x0,0,x0,200,width=2,fill="yellow")
                 if abs(rad - abs(700-x0)) < 10.0:
@@ -158,12 +158,12 @@ for j in range(1000):
                    pos = 700 - (abs(500-700)           - abs(x0-700))
 		   chart_1.create_line(pos,100,pos,200,width=2,fill="blue")
 		   chart_1.create_line(700,150,pos,150,width=2,fill="blue",arrow=LAST)
-                   printText = "{0:+d}{1}\nScore2={2:.2f}".format((pos-700)/10 ,"sec.",p2)
+                   printText = "Residual:{0:+d}{1}\nScore2={2:.2f}".format((pos-700)/10 ,"sec.",p2)
 		   chart_1.create_text(700,30,text=printText,fill="black",font=("Times Roman","16"))
 		   chart_2.create_line(x0,0,x0,200,width=2,fill="yellow")
 		chart_1.update()
                 if abs(rad - abs(300-x0)) < 10.0 or abs(rad-abs(700-x0)) < 10.0:
-		   chart_1.after(pause*500)
+		   chart_1.after(pause*200)
                 else:
 		   chart_1.after(pause)
 
@@ -172,7 +172,7 @@ for j in range(1000):
 		   chart_2.create_text(500,100,text=printText,fill="yellow",font=("Times Roman","16"))
 		   chart_2.create_line(x0,0,x0,200,width=2,fill="yellow")
 		   chart_2.update()
-		   chart_1.after(pause*500)
+		   chart_1.after(pause*200)
 		chart_1.delete(ALL)
 		chart_2.delete(ALL)
 
